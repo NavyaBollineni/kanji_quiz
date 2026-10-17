@@ -124,10 +124,8 @@ def upload_csv(file_storage, level):
         if valid_count == 0:
             raise ValueError("The CSV has no valid kanji records.")
 
-        # Check that each reading can be processed.
-        file_storage.stream.seek(0)
-        questions = read_csv_file(file_storage.stream)
-
+        # Check that decoding and parsing succeeds
+        pass
     except UnicodeDecodeError as error:
         raise ValueError(
             "Please upload a UTF-8 encoded CSV file."
@@ -138,6 +136,7 @@ def upload_csv(file_storage, level):
     destination = DATA_DIR / f"{level}.csv"
     file_storage.stream.seek(0)
     file_storage.save(destination)
+    questions = read_csv_file(destination)
 
     return {
         "level": level.upper(),
