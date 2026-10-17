@@ -39,12 +39,20 @@ def get_columns(fieldnames):
         or columns.get("japanese")
     )
 
+    english_col = columns.get("english")
+
     if not kanji_col or not reading_col:
         raise ValueError(
             "CSV must contain Kanji and Hiragana columns."
         )
 
-    return kanji_col, reading_col
+    if not english_col:
+        raise ValueError(
+            "CSV must contain an English column."
+        )
+
+    return kanji_col, reading_col, english_col
+
 
 
 def read_csv_file(file_path):
@@ -52,11 +60,12 @@ def read_csv_file(file_path):
 
     with open(file_path, "r", encoding="utf-8-sig", newline="") as file:
         reader = csv.DictReader(file)
-        kanji_col, reading_col = get_columns(reader.fieldnames)
+        kanji_col, reading_col, english_col = get_columns(reader.fieldnames)
 
         for row in reader:
             kanji = (row.get(kanji_col) or "").strip()
             reading = (row.get(reading_col) or "").strip()
+            english = (row.get(english_col) or "").strip()
 
             if not kanji or not reading:
                 continue
@@ -64,7 +73,8 @@ def read_csv_file(file_path):
             questions.append({
                 "kanji": kanji,
                 "reading": reading,
-                "romaji": to_romaji(reading)
+                "romaji": to_romaji(reading),
+                "english": english
             })
 
     return questions
@@ -113,7 +123,7 @@ def upload_csv(file_storage, level):
         import io
 
         reader = csv.DictReader(io.StringIO(decoded_text))
-        kanji_col, reading_col = get_columns(reader.fieldnames)
+        kanji_col, reading_col, english_col = get_columns(reader.fieldnames)
 
         valid_count = sum(
             1 for row in reader

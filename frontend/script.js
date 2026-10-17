@@ -25,6 +25,7 @@ const progressBar = document.getElementById("progress-bar");
 
 const readingDisplay = document.getElementById("reading-display");
 const romajiDisplay = document.getElementById("romaji-display");
+const meaningDisplay = document.getElementById("meaning-display");
 
 const finalScore = document.getElementById("final-score");
 const finalPercent = document.getElementById("final-percent");
@@ -78,6 +79,7 @@ function resetQuestionUI() {
     answerPanel.classList.add("hidden");
     readingDisplay.textContent = "";
     romajiDisplay.textContent = "";
+    meaningDisplay.textContent = "";
 
     nextBtn.classList.add("hidden");
     questionCompleted = false;
@@ -201,6 +203,8 @@ revealBtn.addEventListener("click", async () => {
 
         readingDisplay.textContent = data.reading;
         romajiDisplay.textContent = data.romaji;
+        meaningDisplay.textContent = data.meaning;
+
 
         answerPanel.classList.remove("hidden");
         nextBtn.classList.remove("hidden");

@@ -417,3 +417,19 @@ footer {
 .home-btn:active {
     transform: translateY(0);
 }
+
+
+/* English meaning section */
+.meaning-section {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.meaning-display {
+    margin: 8px 0 0;
+    color: var(--accent);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.6;
+}

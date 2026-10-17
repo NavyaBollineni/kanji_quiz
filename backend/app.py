@@ -138,7 +138,8 @@ def reveal_answer():
 
     return jsonify({
         "reading": question["reading"],
-        "romaji": question["romaji"]
+        "romaji": question["romaji"],
+        "meaning": question["english"]
     })
 
 
