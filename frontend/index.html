@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quest | JLPT Practice</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    <main class="app">
+        <header class="header">
+            <div class="brand-mark">日</div>
+            <p class="eyebrow">YOUR JAPANESE JOURNEY</p>
+            <h1>Kanji <span>Quest</span></h1>
+            <p class="subtitle">One kanji at a time. One step closer to fluency.</p>
+        </header>
+
+        <section id="welcome-screen" class="panel">
+            <p class="section-label">CHOOSE YOUR LEVEL</p>
+            <h2>Where shall we begin?</h2>
+            <p class="muted">Select a JLPT level to start your practice.</p>
+
+            <div class="level-grid">
+                <button class="level-btn" data-level="n5">
+                    <span class="level-name">N5</span>
+                    <span class="level-desc">Beginner</span>
+                </button>
+                <button class="level-btn" data-level="n4">
+                    <span class="level-name">N4</span>
+                    <span class="level-desc">Elementary</span>
+                </button>
+                <button class="level-btn" data-level="n3">
+                    <span class="level-name">N3</span>
+                    <span class="level-desc">Intermediate</span>
+                </button>
+                <button class="level-btn" data-level="n2">
+                    <span class="level-name">N2</span>
+                    <span class="level-desc">Upper intermediate</span>
+                </button>
+                <button class="level-btn" data-level="n1">
+                    <span class="level-name">N1</span>
+                    <span class="level-desc">Advanced</span>
+                </button>
+            </div>
+
+            <p id="home-message" class="message" role="status"></p>
+        </section>
+
+        <section id="quiz-screen" class="panel hidden">
+            <button id="home-btn" class="home-btn" type="button">
+    🏠 Home
+</button>
+            <div class="quiz-top">
+                <button id="back-btn" class="text-btn">← Levels</button>
+                <span id="level-label" class="level-tag">N5</span>
+                <span class="score-label">
+                    Score <strong id="score">0</strong>
+                </span>
+            </div>
+
+            <div class="progress-info">
+                <span id="question-count">Question 1 of 100</span>
+                <span id="progress-percent">1%</span>
+            </div>
+            <div class="progress-track">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <div class="kanji-card">
+                <p class="section-label">WHAT IS THE READING?</p>
+                <div id="kanji-display" class="kanji-display">日</div>
+                <p class="muted">Type your answer in hiragana or romaji.</p>
+            </div>
+
+            <form id="answer-form">
+                <label for="answer-input">Your answer</label>
+                <input
+                    id="answer-input"
+                    type="text"
+                    placeholder="e.g. ひ or hi"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    required
+                >
+
+                <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+
+                <div class="button-row">
+                    <button type="submit" id="check-btn" class="primary-btn">
+                        Check Answer
+                    </button>
+                    <button type="button" id="reveal-btn" class="secondary-btn">
+                        Reveal Answer
+                    </button>
+                </div>
+            </form>
+
+            <div id="answer-panel" class="answer-panel hidden">
+                <p class="section-label">CORRECT READING</p>
+                <p id="reading-display" class="reading-display"></p>
+                <p id="romaji-display" class="romaji-display"></p>
+            </div>
+
+            <button id="next-btn" class="primary-btn next-btn hidden">
+                Next Kanji →
+            </button>
+        </section>
+
+        <section id="complete-screen" class="panel hidden">
+            <div class="finish-symbol">祝</div>
+            <p class="eyebrow">PRACTICE COMPLETE</p>
+            <h2>よく頑張りました！</h2>
+            <p class="muted">You have completed your kanji session.</p>
+
+            <div class="result-card">
+                <p class="section-label">YOUR FINAL SCORE</p>
+                <p id="final-score" class="final-score">0 / 100</p>
+                <p id="final-percent" class="muted">0% correct</p>
+            </div>
+
+            <button id="restart-btn" class="primary-btn">Try Again</button>
+            <button id="home-btn" class="secondary-btn">Choose Another Level</button>
+        </section>
+
+        <footer>
+            <span>日本語を楽しもう</span>
+            <span>Keep learning. Keep growing.</span>
+        </footer>
+    </main>
+</body>
+</html>
